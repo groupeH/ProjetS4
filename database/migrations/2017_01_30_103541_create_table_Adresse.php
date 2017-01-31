@@ -17,19 +17,14 @@ class CreateTableAdresse extends Migration
             $table->increments('id_Adresse');
             $table->string('num', 300);
             $table->string('libelle', 100);
-            $table->integer('code_postal', 100);
+            $table->integer('code_postal');
             $table->string('ville', 100);
             $table->string('pays', 100);
             $table->string('info_suplementaire', 500);
 
 
         });
-        Schema::table('Adresse', function(Blueprint $table) {
-            $table->primary('id_Adresse')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
 
-        });
 
     }
 

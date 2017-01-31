@@ -15,21 +15,17 @@ class CreateTableCotisation extends Migration
         //
                Schema::create('Cotisation', function(Blueprint $table){
             $table->increments('id_Cotisation');
-            $table->date('dateAdhesion',50);
-            $table ->date('dateFin',100);
-            $table ->increments('id_TypeMembre');
+            $table->date('dateAdhesion');
+            $table ->date('dateFin');
+            $table ->integer('id_TypeMembre');
 
 
 
 
         });
         Schema::table('Cotisation', function(Blueprint $table) {
-            $table->primary('id_Corisation')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
-            $table->foreign('id_TypeMembre')->references('id_TypeMembre')->on('TypeMembre')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
+
+            $table->foreign('id_TypeMembre')->references('id_TypeMembre')->on('TypeMembre');
         });
 
 

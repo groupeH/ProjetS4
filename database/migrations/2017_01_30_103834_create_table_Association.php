@@ -14,24 +14,20 @@ class CreateTableAssociation extends Migration
     {
         //
         Schema::create('Association', function (Blueprint $table) {
-            $table->increments('id_Association');
+            $table->increments('id_Assos');
             $table->string('nomAssos', 300);
             $table->string('mailAssos', 100);
-            $table->integer('telephoneAssos', 100);
+            $table->integer('telephoneAssos');
             $table->string('description', 100);
             $table->string('pays', 100);
             $table->string('info_suplementaire', 500);
-            $table->increments('id_Adresse');
+            $table->integer('id_Adresse');
 
 
         });
         Schema::table('Association', function(Blueprint $table) {
-            $table->primary('id_Association')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
-            $table->foreign('id_Adresse')->references('id_Adresse')->on('Adresse')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
+
+            $table->foreign('id_Adresse')->references('id_Adresse')->on('Adresse');
         });
 
     }

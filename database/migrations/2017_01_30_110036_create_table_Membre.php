@@ -25,9 +25,7 @@ class CreateTableMembre extends Migration
         });
         Schema::table('Cotisation', function(Blueprint $table) {
             $table->primary(array('id_Membre','id_Utilisateur'));
-            $table->foreign('id_TypeMembre')->references('id_TypeMembre')->on('TypeMembre')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
+            $table->foreign('id_TypeMembre')->references('id_TypeMembre')->on('TypeMembre');
 
         });
 

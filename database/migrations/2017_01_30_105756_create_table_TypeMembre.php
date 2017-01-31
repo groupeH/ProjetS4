@@ -16,20 +16,16 @@ class CreateTableTypeMembre extends Migration
         Schema::create('TypeMembre', function(Blueprint $table){
             $table->increments('id_TypeMembre');
             $table->string('type',50);
-            $table ->float('montantCotisation',100);
-            $table ->increments('id_Cotisation');
+            $table ->float('montantCotisation');
+            $table ->integer('id_Cotisation');
 
 
 
 
         });
         Schema::table('TypeMembre', function(Blueprint $table) {
-            $table->primary('id_TypeMembre')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
-            $table->foreign('id_Cotisation')->references('id_Cotisation')->on('Cotisation')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
+
+            $table->foreign('id_Cotisation')->references('id_Cotisation')->on('Cotisation');
         });
 
 

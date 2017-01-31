@@ -17,21 +17,14 @@ class CreateResponsable extends Migration
         Schema::create('Responsable', function (Blueprint $table) {
             $table->increments('id_Responsable');
             $table->string('titreResponsable', 100);
-            $table->increments('id_Membre');
+            $table->integer('id_Membre');
             $table->increments('id_Utilisateur');
         });
 
         Schema::table('Responsable', function (Blueprint $table) {
+            $table->primary(array('id_Responsable','id_Membre','id_Utilisateur'));
 
-            $table->primary('id_Responsable')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
-            $table->primary('id_Membre')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
-            $table->primary('id_Utilisateur')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
+
 
 
              });
